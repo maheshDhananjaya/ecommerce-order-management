@@ -9,3 +9,11 @@ export const addOrder = (order: any) =>
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(order),
   });
+
+export const getProducts = () =>
+  fetch(`${API_URL}/products`).then((res) => res.json());
+
+export const orderDelete = (id: number) =>
+  fetch(`${API_URL}/orders/${id}`, {
+    method: "DELETE",
+  });
