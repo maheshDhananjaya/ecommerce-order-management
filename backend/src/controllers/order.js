@@ -9,6 +9,15 @@ exports.getOrders = async (req, res, next) => {
   }
 };
 
+exports.getProducts = async (req, res, next) => {
+  try {
+    const { rows } = await db.query("SELECT * FROM products ORDER BY id ASC");
+    res.json(rows);
+  } catch (err) {
+    next(err);
+  }
+};
+
 exports.getOrderById = async (req, res, next) => {
   try {
     const { id } = req.params;
